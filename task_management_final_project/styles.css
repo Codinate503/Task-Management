@@ -7,9 +7,25 @@ margin: 0px;
 height: 100%;
 }
 
+/*  MAIN FONTS */
 
 
-
+.main-font{
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: #d8d8d8;
+}
+.second_font
+{
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: #000000;
+  font-size: 14px;
+}
 
 /*  MAIN CLASSES */
 #mainGrid
@@ -29,16 +45,33 @@ height: 100%;
     #header
     {
         grid-area: header;
-        background-color: #98f8f8;
+        background-color: #42434b;
     }
 
     /* HEADER FLEXBOX */
         .headerFlex
         {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            flex-direction: row;
+            justify-content: flex-end;
             align-items: center;
+
+        }
+        .headerTxt
+        {
+            float: left;
+            padding: 15px;
+            margin:1px;
+        }
+        
+        .headerIcons
+        {   margin-top: 5px;
+            padding: 15px;
+            padding-left: 20px;
+            width: 30px;
+            height: 30px;
+
+            
         }
 
 
@@ -47,18 +80,34 @@ height: 100%;
     #sidebar
     {
         grid-area: sidebar;
-        background-color: #5e923f;
+        background-color: rgb(28, 28, 28);
     }
 
     /* SIDEBAR FLEXBOX */
+        #userPhoto
+        {
+            width: 40px;
+            height: 40px;
+            border-radius: 100px;
+            padding: 15px;
+        }
+
         .sidebarFlex
         {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             justify-content: flex-end;
             align-items: center;
         }
+         .sidebarIcons
+        {   margin-top: 15px;
+            padding: 15px;
+            padding-left: 17px;
+            width: 30px;
+            height: 30px;
 
+            
+        }
 
 
 /* MAIN BODY */
@@ -67,3 +116,16 @@ height: 100%;
         grid-area: mainbody;
         background-color: #dfebeb;
     }
+       /* MAIN FLEXBOX */
+        .mainFlex
+        {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .listitems
+        {
+            padding:20px;
+            list-style-type: none;
+        }
