@@ -1,0 +1,69 @@
+html{
+height: 100%;
+}
+
+body{
+margin: 0px;
+height: 100%;
+}
+
+
+
+
+
+/*  MAIN CLASSES */
+#mainGrid
+{
+    display: grid;
+
+    grid-template-rows: 70px auto;
+    grid-template-columns: 70px auto;
+    height: 100%;
+
+    grid-template-areas: 
+        "sidebar header"
+        "sidebar mainbody";
+}
+
+/* HEADER */
+    #header
+    {
+        grid-area: header;
+        background-color: #98f8f8;
+    }
+
+    /* HEADER FLEXBOX */
+        .headerFlex
+        {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+
+/* SIDEBAR */
+    #sidebar
+    {
+        grid-area: sidebar;
+        background-color: #5e923f;
+    }
+
+    /* SIDEBAR FLEXBOX */
+        .sidebarFlex
+        {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+
+
+/* MAIN BODY */
+    #mainbody
+    {
+        grid-area: mainbody;
+        background-color: #dfebeb;
+    }
