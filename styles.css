@@ -8,8 +8,6 @@ height: 100%;
 }
 
 /*  MAIN FONTS */
-
-
 .main-font{
   font-family: "Raleway", sans-serif;
   font-optical-sizing: auto;
@@ -26,106 +24,119 @@ height: 100%;
   color: #000000;
   font-size: 14px;
 }
-
-/*  MAIN CLASSES */
-#mainGrid
-{
-    display: grid;
-
-    grid-template-rows: 70px auto;
-    grid-template-columns: 70px auto;
-    height: 100%;
-
-    grid-template-areas: 
-        "sidebar header"
-        "sidebar mainbody";
-}
-
-/* HEADER */
-    #header
+    /*  MAIN CLASSES */
+    #mainGrid
     {
-        grid-area: header;
-        background-color: #42434b;
+        display: grid;
+    
+        grid-template-rows: 70px auto;
+        grid-template-columns: 70px auto;
+        height: 100%;
+    
+        grid-template-areas: 
+            "sidebar header"
+            "sidebar mainbody";
     }
 
+
+/* HEADER */
+#header
+{
+    grid-area: header;
+    background-color: #42434b;
+}
     /* HEADER FLEXBOX */
-        .headerFlex
-        {
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-end;
-            align-items: center;
+    .headerFlex
+    {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    .headerTxt
+    {
+        float: left;
+        padding: 15px;
+        margin:1px;
+    }
+    .headerIcons
+    {   margin-top: 5px;
+        padding: 15px;
+        padding-left: 20px;
+        width: 30px;
+        height: 30px;
 
-        }
-        .headerTxt
-        {
-            float: left;
-            padding: 15px;
-            margin:1px;
-        }
-        
-        .headerIcons
-        {   margin-top: 5px;
-            padding: 15px;
-            padding-left: 20px;
-            width: 30px;
-            height: 30px;
-
-            
-        }
-
+    }
 
 
 /* SIDEBAR */
-    #sidebar
-    {
-        grid-area: sidebar;
-        background-color: rgb(28, 28, 28);
-    }
+#sidebar
+{
+    grid-area: sidebar;
+    background-color: rgb(28, 28, 28);
+}
 
     /* SIDEBAR FLEXBOX */
-        #userPhoto
-        {
-            width: 40px;
-            height: 40px;
-            border-radius: 100px;
-            padding: 15px;
-        }
-
-        .sidebarFlex
-        {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: center;
-        }
-         .sidebarIcons
-        {   margin-top: 15px;
-            padding: 15px;
-            padding-left: 17px;
-            width: 30px;
-            height: 30px;
-
-            
-        }
+    #userPhoto
+    {
+        width: 40px;
+        height: 40px;
+        border-radius: 100px;
+        padding: 15px;
+    }
+    .sidebarFlex
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+    }
+     .sidebarIcons
+    {   margin-top: 15px;
+        padding: 15px;
+        padding-left: 17px;
+        width: 30px;
+        height: 30px;
+    }
 
 
 /* MAIN BODY */
-    #mainbody
-    {
-        grid-area: mainbody;
-        background-color: #dfebeb;
+#mainbody
+{
+    grid-area: mainbody;
+    background-color: #dfebeb;
+}
+    /* MAIN FLEXBOX */
+    .mainFlex {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+        width: 97.5%;
+        height: 100%;
     }
-       /* MAIN FLEXBOX */
-        .mainFlex
-        {
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-            align-items: center;
-        }
-        .listitems
-        {
-            padding:20px;
-            list-style-type: none;
-        }
+
+
+/* CONTAINER LAYOUT */
+.tasks-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+}
+    /* CARD STYLING */
+    .task-card {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 15px 20px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        width: 100%;
+        font-family: 'Raleway', sans-serif;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .task-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
