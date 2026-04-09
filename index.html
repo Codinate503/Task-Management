@@ -51,6 +51,30 @@
             </div>
         </div>
 
+        <!-- POPUP -->
+        <div id="popupOverlay">
+            <div id="popupBox">
+                <h2>Edit Task</h2>
+
+                <input type="text" id="editTitle" placeholder="Title">
+                <textarea id="editDescription" placeholder="Description"></textarea>
+
+                <input type="date" id="editDate">
+
+                <select id="editPriority">
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
+
+                <div class="popupButtons">
+                    <button id="saveBtn">Save</button>
+                    <button id="deleteBtn">Delete</button>
+                    <button id="cancelBtn">Cancel</button>
+                </div>
+            </div>
+        </div>
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script src="app.js"></script>
     </body>
