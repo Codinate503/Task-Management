@@ -236,19 +236,6 @@ height: 100%;
     color: #555;
 }
 
-/* PRIORITY COLORS (TITLE) */
-.priority-low {
-    color: green;
-}
-
-.priority-medium {
-    color: goldenrod;
-}
-
-.priority-high {
-    color: rgb(255, 0, 0);
-}
-
 /* DROPDOWN COLORS */
 #editPriority option[value="Low"] {
     color: green;
