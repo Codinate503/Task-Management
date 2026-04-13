@@ -217,6 +217,20 @@ height: 100%;
     opacity: 0.7;
 }
 
+.complete-btn {
+    margin-top: 10px;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 6px;
+    background-color: #52a36a;
+    color: white;
+    cursor: pointer;
+}
+
+.complete-btn:hover {
+    opacity: 0.85;
+}
+
 /* ANIMATION */
 @keyframes fadeIn {
     from { transform: scale(0.9); opacity: 0; }

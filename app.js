@@ -31,7 +31,20 @@ function renderTasks() {
                     ${task.dueDate ? formatDate(task.dueDate) : "No Date"}
                 </span>
             </div>
-        `;
+
+            <button class="complete-btn">
+                ${task.completed ? "Undo" : "Complete"} 
+            </button>
+        `; 
+
+        // COMPLETE
+        const completeBtn = card.querySelector(".complete-btn");        
+
+        completeBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            toggleComplete(task.id);
+        });
+
 
         // CLICK = OPEN POPUP
         card.addEventListener("click", () => openPopup(task.id));
@@ -111,5 +124,7 @@ function toggleComplete(id) {
 
 // ADD BUTTON
 document.querySelector(".sidebarIcons:last-child").addEventListener("click", addTask);
+
+
 
 renderTasks();
