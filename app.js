@@ -6,44 +6,116 @@ let tasks = [
     { id: 4, title: "Walk dog", description: "", dueDate: "", priority: "High", completed: false }
 ];
 
+
+
 let taskIdCounter = 5;
 let currentTaskId = null;
 
 const tasksContainer = document.getElementById("tasksContainer");
 const overlay = document.getElementById("popupOverlay");
 
+
+//used to indicate the type of sorting that occurs
+let sortType = "";
+
+
 // RENDER TASKS
 function renderTasks() {
+
+
+    //maybe should make it its own function?
+
+    //check if task need to be rendered in certian order
+
+    //puts a copy of tasks into displayed tasks
+    let displayedTasks = tasks.slice();
+
+    let priorityLevel =
+        {
+            High: 1,
+            Medium: 2,
+            Low: 3
+        };
+
+    if(sortType === "DueDate")
+    {   
+        displayedTasks.sort((a, b) => {
+            //sends empty dates to the bottom of the list because they have no date 
+
+            //negative numbers means that A was smaller so B will go first  
+            if(a.dueDate === "")
+            {
+                return 1;
+            }
+            if(b.dueDate === "") 
+            {
+                return -1;
+            }
+            //changing dates from string to numberical date format
+            let dateA = new Date(a.dueDate);
+            let dateB = new Date(b.dueDate);
+            
+            return dateA - dateB;
+        });
+    }
+
+    else if(sortType === "Priority")
+    {
+       displayedTasks.sort((a, b) => priorityLevel[a.priority] - priorityLevel[b.priority]);
+    }
+
+
+
+
+
     tasksContainer.innerHTML = "";
 
-    tasks.forEach(task => {
+    displayedTasks.forEach(task => {
         const card = document.createElement("div");
         card.className = "task-card";
 
-        if (task.completed) card.classList.add("completed");
+        if (task.completed) {
+            card.classList.add("completed");
+        }
 
         card.innerHTML = `
             <div class="task-row">
-                <h3 class="priority-${task.priority.toLowerCase()}">
-                    ${task.title}
-                </h3>
+                <div class="buttonAndName">
+                    <button class="complete-btn">
+                        
+                    </button>
+                    <h3 class="priority-${task.priority.toLowerCase()}">
+                        ${task.title}
+                    </h3>
+                </div>
                 <span class="due-date">
                     ${task.dueDate ? formatDate(task.dueDate) : "No Date"}
                 </span>
             </div>
 
-            <button class="complete-btn">
-                ${task.completed ? "Undo" : "Complete"} 
-            </button>
-        `; 
+        `;  
+
+        // <input class="complete-btn" type="checkbox">
+
+        // <button class="complete-btn">
+        //         ${task.completed ? "Undo" : "Complete"} 
+        // </button>
+
 
         // COMPLETE
         const completeBtn = card.querySelector(".complete-btn");        
 
-        completeBtn.addEventListener("click", (e) => {
-            e.stopPropagation();
+        completeBtn.addEventListener("click", (event) => {
+            event.stopPropagation();
             toggleComplete(task.id);
+
         });
+
+        // adds check mark if the task is completed 
+        if(task.completed)
+        {
+            completeBtn.innerHTML = "<img src='icons/check.png' class='check'>";
+        }
 
 
         // CLICK = OPEN POPUP
@@ -125,6 +197,23 @@ function toggleComplete(id) {
 // ADD BUTTON
 document.querySelector(".sidebarIcons:last-child").addEventListener("click", addTask);
 
-
-
 renderTasks();
+
+
+
+//Sorting the tasks based on due date
+document.querySelector(".dueDate").addEventListener("click", function()
+{
+    // we'll use 2 for due date 
+    sortType = "DueDate";
+    renderTasks();
+});
+
+document.querySelector(".priority").addEventListener("click", function(){
+
+    //we'll use 3 for priority
+    sortType = "Priority";
+    renderTasks();
+});
+
+

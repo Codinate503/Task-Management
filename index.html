@@ -22,8 +22,17 @@
                 <h1 class="headerTxt main-font">Today's Tasks</h1>
                 
                 <div class="headerFlex">
-                    <img src="icons/funnel_white.svg" class="headerIcons">
-                    <img src="icons/search_white.svg" class="headerIcons">
+                
+                    <div class="dropdown">
+                        <img id="dropdownbutton" src="icons/funnel_white.svg" class="headerIcons">
+                        <div id="dropdowncontent" class="dropdown-content second_font">
+                            <p class="second_font filtertitle"> Sort By:</p>
+                            <button class="second_font dueDate">Due Date</button>      
+                            <button class="second_font priority">Priority</button>
+                        </div>
+                    </div>
+                        
+                        <img src="icons/search_white.svg" class="headerIcons">
                 </div>
 
             </div>
@@ -54,7 +63,7 @@
         <!-- POPUP -->
         <div id="popupOverlay">
             <div id="popupBox">
-                <h2>Edit Task</h2>
+                <h2 class="main-font">Edit Task</h2>
 
                 <input type="text" id="editTitle" placeholder="Title">
                 <textarea id="editDescription" placeholder="Description"></textarea>

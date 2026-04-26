@@ -65,8 +65,63 @@ height: 100%;
         padding-left: 20px;
         width: 30px;
         height: 30px;
+        transition: transform 0.65s ease-in-out;
+    }
+    .headerIcons:hover
+    {
+        transform: scale(1.13);
+    }
+
+
+
+
+  
+    /* DROPDOWN SORT */
+    .dropdown
+    {
+        position: relative;
+        display:inline-block;  
+    }
+
+    .dropdown:hover .dropdown-content
+    {
+        display: block;
+    }
+    
+    .dropdown-content
+    {
+        display: none;
+        position: absolute;
+        background-color: #9b9ca2;
+        min-width: 95px;
+        right: 5px;
+        border-radius: 3px;
+    }
+    p.filtertitle
+    {
+        padding:5px;
+        padding-bottom: 0px;
+        margin: 0px;
+        color: #ffffff;
 
     }
+
+    .dropdown-content button
+    {   
+        margin: 5px;
+        display: block;
+        border: none;
+        color: #ffffff;
+        background: none;
+        font-size: 12px;
+        transition: transform .8s ease-in;
+    }
+    .dropdown-content button:hover
+    {
+        transform: translateX(5px);
+    }
+
+
 
 
 /* SIDEBAR */
@@ -97,6 +152,11 @@ height: 100%;
         padding-left: 17px;
         width: 30px;
         height: 30px;
+        transition: transform 0.7s ease-in-out;
+    }
+    .sidebarIcons:hover
+    {
+        transform: scale(1.21);
     }
 
 
@@ -105,6 +165,8 @@ height: 100%;
 {
     grid-area: mainbody;
     background-color: #dfebeb;
+    display: flex;
+    justify-content: center;
 }
     /* MAIN FLEXBOX */
     .mainFlex {
@@ -122,15 +184,16 @@ height: 100%;
     display: flex;
     flex-direction: column;
     gap: 15px;
-    padding: 10px;
+    padding-top: 15px;
+    padding-bottom: 20px;
 }
     /* CARD STYLING */
     .task-card {
         background-color: #ffffff;
         border-radius: 10px;
-        padding: 15px 20px;
+        padding: 15px 15px;
         box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        width: 100%;
+        
         font-family: 'Raleway', sans-serif;
         cursor: pointer;
         transition: transform 0.2s, box-shadow 0.2s;
@@ -197,6 +260,8 @@ height: 100%;
     opacity: 0.8;
 }
 
+
+
 /* PRIORITY COLORS */
 .priority-low { 
     color: green; 
@@ -210,26 +275,57 @@ height: 100%;
     color: rgb(255, 0, 0);
  }
 
+
 /* COMPLETED */
+.task-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.buttonAndName{
+    display: flex;
+    column-gap: 25px;
+}
+
 .task-card.completed {
     background-color: #d4edda;
     text-decoration: line-through;
     opacity: 0.7;
+    
 }
 
+/* COMPLETED BUTTON */
+
 .complete-btn {
-    margin-top: 10px;
-    padding: 6px 10px;
-    border: none;
+    width: 32px;
+    height: 32px;
+    
+    align-self: center;
+    padding: 0px;
+    border: 1.8px solid gainsboro;
+    background-color: white;
     border-radius: 6px;
-    background-color: #52a36a;
-    color: white;
+    
+    color: rgb(255, 255, 255);
     cursor: pointer;
 }
 
 .complete-btn:hover {
     opacity: 0.85;
+
 }
+
+.check
+{   
+    appearance: none;
+    padding-top: 1px;
+    width: 25px;
+    height: 26px;
+    border-radius: 3px; 
+}
+
+
+
 
 /* ANIMATION */
 @keyframes fadeIn {
@@ -249,6 +345,8 @@ height: 100%;
     font-size: 14px;
     color: #555;
 }
+
+
 
 /* DROPDOWN COLORS */
 #editPriority option[value="Low"] {
