@@ -231,7 +231,7 @@ function formatDate(dateString) {
     const date = new Date(dateString);
 
     const month = date.getMonth() + 1; // months start at 0
-    const day = date.getDate();
+    const day = date.getDate() + 1;
 
     return `${month}/${day}`;
 }
