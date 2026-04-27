@@ -51,7 +51,8 @@ height: 100%;
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
-        align-items: center;
+        
+        height: 70px;
     }
     .headerTxt
     {
@@ -72,55 +73,52 @@ height: 100%;
         transform: scale(1.13);
     }
 
-
-
-
-  
+        
     /* DROPDOWN SORT */
-    .dropdown
-    {
-        position: relative;
-        display:inline-block;  
-    }
+        .dropdown
+        {
+            position: relative;
+            display:inline-block;  
+        }
 
-    .dropdown:hover .dropdown-content
-    {
-        display: block;
-    }
-    
-    .dropdown-content
-    {
-        display: none;
-        position: absolute;
-        background-color: #9b9ca2;
-        min-width: 95px;
-        right: 5px;
-        border-radius: 3px;
-    }
-    p.filtertitle
-    {
-        padding:5px;
-        padding-bottom: 0px;
-        margin: 0px;
-        color: #ffffff;
+        .dropdown:hover .dropdown-content
+        {
+            display: block;
+        }
+        
+        .dropdown-content
+        {
+            display: none;
+            position: absolute;
+            z-index: 1;
+            background-color: #9b9ca2;
+            min-width: 95px;
+            right: 5px;
+            border-radius: 3px;
+        }
+        p.filtertitle
+        {
+            padding:5px;
+            padding-bottom: 0px;
+            margin: 0px;
+            color: #ffffff;
 
-    }
+        }
 
-    .dropdown-content button
-    {   
-        margin: 5px;
-        display: block;
-        border: none;
-        color: #ffffff;
-        background: none;
-        font-size: 12px;
-        transition: transform .8s ease-in;
-    }
-    .dropdown-content button:hover
-    {
-        transform: translateX(5px);
-    }
-
+        .dropdown-content button
+        {   
+            margin: 5px;
+            display: block;
+            border: none;
+            color: #ffffff;
+            background: none;
+            font-size: 12px;
+            transition: transform .8s ease-in;
+        }
+        .dropdown-content button:hover
+        {
+            transform: translateX(5px);
+        }
 
 
 
@@ -132,13 +130,33 @@ height: 100%;
 }
 
     /* SIDEBAR FLEXBOX */
-    #userPhoto
-    {
+ 
+    .userPic
+    {   
+        margin-top: 5px;
         width: 40px;
         height: 40px;
-        border-radius: 100px;
-        padding: 15px;
+        border-radius: 30px;
+        border: 2px, solid, #4f4f4f;
     }
+    .profilePic
+    {   
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 70px;
+        height: 70px;
+        
+    }
+    .photoInput
+    {
+        display: none;
+    }
+
+
+
+
+
     .sidebarFlex
     {
         display: flex;
@@ -147,11 +165,11 @@ height: 100%;
         align-items: center;
     }
      .sidebarIcons
-    {   margin-top: 15px;
+    {   
         padding: 15px;
         padding-left: 17px;
         width: 30px;
-        height: 30px;
+        height: 50px;
         transition: transform 0.7s ease-in-out;
     }
     .sidebarIcons:hover
@@ -317,7 +335,7 @@ height: 100%;
 
 .check
 {   
-    appearance: none;
+    
     padding-top: 1px;
     width: 25px;
     height: 26px;
@@ -360,4 +378,8 @@ height: 100%;
 #editPriority option[value="High"] {
     color: rgb(255, 0, 0);
 }
+
+
+
+
 

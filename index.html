@@ -27,8 +27,8 @@
                         <img id="dropdownbutton" src="icons/funnel_white.svg" class="headerIcons">
                         <div id="dropdowncontent" class="dropdown-content second_font">
                             <p class="second_font filtertitle"> Sort By:</p>
-                            <button class="second_font dueDate">Due Date</button>      
-                            <button class="second_font priority">Priority</button>
+                            <button class="second_font dueDate">▸&nbsp;Due Date</button>      
+                            <button class="second_font priority">▸&nbsp;Priority</button>
                         </div>
                     </div>
                         
@@ -42,7 +42,18 @@
             <div id="sidebar">
                 
                 <div class="sidebarFlex">
-                    <img src="icons/placeholder.png" id="userPhoto">
+
+
+                    <div class="profilePic"> 
+                        <!--  <input type="file"> -->
+                        
+                        <label for="userPhoto"> <img src="icons/placeholder.png" class="userPic" id="profilePic"> </label>
+
+                        <input type="file" accept="image/jpeg, image/png, image/jpg" id="userPhoto" class="photoInput">
+                    </div>
+                        
+
+
                     <img src="icons/house_white.svg" class="sidebarIcons">
                     <img src="icons/barchart_white.svg" class="sidebarIcons">
                     <img src="icons/plus_white.svg" class="sidebarIcons">     

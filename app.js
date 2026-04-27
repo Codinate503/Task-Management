@@ -216,4 +216,19 @@ document.querySelector(".priority").addEventListener("click", function(){
     renderTasks();
 });
 
+//Adding Custiom Profile Pic
 
+let profilePic = document.querySelector("#profilePic");
+
+let inputFile = document.querySelector("#userPhoto");
+
+inputFile.addEventListener("change", function()
+{
+    if(inputFile.files.length > 0)
+    {
+        profilePic.src = URL.createObjectURL(inputFile.files[0]);
+    }
+    
+
+});
+    
