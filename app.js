@@ -18,6 +18,8 @@ const overlay = document.getElementById("popupOverlay");
 //used to indicate the type of sorting that occurs
 let sortType = "";
 
+let searchQuery = "";
+
 
 // RENDER TASKS
 function renderTasks() {
@@ -29,6 +31,14 @@ function renderTasks() {
 
     //puts a copy of tasks into displayed tasks
     let displayedTasks = tasks.slice();
+
+    // Filter by search query
+    if (searchQuery) {
+        displayedTasks = displayedTasks.filter(task =>
+            task.title.toLowerCase().includes(searchQuery) ||
+            task.description.toLowerCase().includes(searchQuery)
+        );
+    }
 
     let priorityLevel =
         {
@@ -232,3 +242,35 @@ inputFile.addEventListener("change", function()
 
 });
     
+// SEARCH FUNCTIONALITY
+const searchToggle = document.getElementById("searchToggle");
+const searchBar = document.getElementById("searchBar");
+const searchInput = document.getElementById("searchInput");
+
+// TOGGLE OPEN/CLOSED
+searchToggle.addEventListener("click", () => {
+    searchBar.classList.toggle("open");
+    if (searchBar.classList.contains("open")) {
+        searchInput.focus();
+    } else {
+        searchInput.value = "";
+        searchQuery = "";
+        renderTasks();
+    }
+});
+
+// FILTER AS USER TYPES
+searchInput.addEventListener("input", () => {
+    searchQuery = searchInput.value.trim().toLowerCase();
+    renderTasks();
+});
+
+// CLOSE
+searchInput.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+        searchBar.classList.remove("open");
+        searchInput.value = "";
+        searchQuery = "";
+        renderTasks();
+    }
+});
