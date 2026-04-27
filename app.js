@@ -21,7 +21,98 @@ let sortType = "";
 let searchQuery = "";
 
 
-// RENDER TASKS
+
+// --- Statistics dashboard ---
+
+// value which decides which page to render
+    // can be changed by clicking the statistics button and the home button
+let currentView = "home";
+
+// renderView function which deicdes which page to render depending on currentView
+function renderView() {
+    if (currentView === "home") {
+        renderTasks();
+    } else if (currentView === "stats") {
+        renderStats();
+    }
+}
+
+// switch views
+document.getElementById("homeBtn").addEventListener("click", () => {
+    currentView = "home";
+    renderView();
+});
+
+document.getElementById("statsBtn").addEventListener("click", () => {
+    currentView = "stats";
+    renderView();
+});
+
+// render stats
+function renderStats() {
+    tasksContainer.innerHTML = "";
+
+    let total = tasks.length;
+    let completed = tasks.filter(t => t.completed).length;
+    let overdue = tasks.filter(t => {
+        if (!t.dueDate) return false;
+        return new Date(t.dueDate) < new Date() && !t.completed;
+    }).length;
+
+    let today = new Date().toISOString().split("T")[0];
+    let dueToday = tasks.filter(t =>
+        t.dueDate === today && !t.completed
+    ).length;
+
+    let percent = total === 0 ? 0 : Math.round((completed / total) * 100);
+
+    const statsHTML = `
+        <div class="stats-page">
+
+            <div class="stats-bars">
+
+                <div class="bar-group">
+                    <h3>Total Tasks</h3>
+                    <div class="task-bar">
+                        ${tasks.map(() => `<div class="block total"></div>`).join("")}
+                    </div>
+                </div>
+
+                <div class="bar-group">
+                    <h3>Completed</h3>
+                    <div class="task-bar">
+                        ${tasks.map((_, i) => `
+                            <div class="block ${i < completed ? "completed" : "empty"}"></div>
+                        `).join("")}
+                    </div>
+                </div>
+                        
+                <div class="bar-group">
+                    <h3>Due Today</h3>
+                    <div class="task-bar">
+                        ${tasks.map((_, i) => `
+                            <div class="block ${i < dueToday ? "dueToday" : "empty"}"></div>
+                        `).join("")}
+                    </div>
+                </div>
+
+                <div class="bar-group">
+                    <h3>Overdue</h3>
+                    <div class="task-bar">
+                        ${tasks.map((_, i) => `
+                            <div class="block ${i < overdue ? "overdue" : "empty"}"></div>
+                        `).join("")}
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    `;
+
+    tasksContainer.innerHTML = statsHTML;
+}
+
+// render tasks
 function renderTasks() {
 
 
@@ -156,7 +247,7 @@ function addTask() {
         completed: false
     });
 
-    renderTasks();
+    renderView();
 }
 
 // POPUP LOGIC
@@ -186,13 +277,13 @@ document.getElementById("saveBtn").onclick = function () {
     task.priority = document.getElementById("editPriority").value;
 
     closePopup();
-    renderTasks();
+    renderView();
 };
 
 document.getElementById("deleteBtn").onclick = function () {
     tasks = tasks.filter(t => t.id !== currentTaskId);
     closePopup();
-    renderTasks();
+    renderView();
 };
 
 document.getElementById("cancelBtn").onclick = closePopup;
@@ -201,13 +292,13 @@ document.getElementById("cancelBtn").onclick = closePopup;
 function toggleComplete(id) {
     const task = tasks.find(t => t.id === id);
     task.completed = !task.completed;
-    renderTasks();
+    renderView();
 }
 
 // ADD BUTTON
 document.querySelector(".sidebarIcons:last-child").addEventListener("click", addTask);
 
-renderTasks();
+renderView();
 
 
 
@@ -216,14 +307,14 @@ document.querySelector(".dueDate").addEventListener("click", function()
 {
     // we'll use 2 for due date 
     sortType = "DueDate";
-    renderTasks();
+    renderView();
 });
 
 document.querySelector(".priority").addEventListener("click", function(){
 
     //we'll use 3 for priority
     sortType = "Priority";
-    renderTasks();
+    renderView();
 });
 
 //Adding Custiom Profile Pic
@@ -255,14 +346,14 @@ searchToggle.addEventListener("click", () => {
     } else {
         searchInput.value = "";
         searchQuery = "";
-        renderTasks();
+        renderView();
     }
 });
 
 // FILTER AS USER TYPES
 searchInput.addEventListener("input", () => {
     searchQuery = searchInput.value.trim().toLowerCase();
-    renderTasks();
+    renderView();
 });
 
 // CLOSE
@@ -271,6 +362,6 @@ searchInput.addEventListener("keydown", (e) => {
         searchBar.classList.remove("open");
         searchInput.value = "";
         searchQuery = "";
-        renderTasks();
+        renderView();
     }
 });
