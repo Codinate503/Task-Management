@@ -54,12 +54,13 @@ function renderStats() {
 
     let total = tasks.length;
     let completed = tasks.filter(t => t.completed).length;
+    let today = new Date().toISOString().split("T")[0];
+    
     let overdue = tasks.filter(t => {
         if (!t.dueDate) return false;
-        return new Date(t.dueDate) < new Date() && !t.completed;
+        return t.dueDate < today && !t.completed;
     }).length;
 
-    let today = new Date().toISOString().split("T")[0];
     let dueToday = tasks.filter(t =>
         t.dueDate === today && !t.completed
     ).length;
@@ -228,14 +229,9 @@ function renderTasks() {
 
 // DATE CONVERSION INTO MM/DD
 function formatDate(dateString) {
-    const date = new Date(dateString);
-
-    const month = date.getMonth() + 1; // months start at 0
-    const day = date.getDate() + 1;
-
+    const [year, month, day] = dateString.split("-").map(Number);
     return `${month}/${day}`;
 }
-
 // CREATE TASK
 function addTask() {
     tasks.push({
