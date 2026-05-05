@@ -20,6 +20,7 @@ let sortType = "";
 
 let searchQuery = "";
 
+let showCompletedTasks = true;
 
 
 // --- Statistics dashboard ---
@@ -160,13 +161,17 @@ function renderTasks() {
             return dateA - dateB;
         });
     }
-
+    
     else if(sortType === "Priority")
     {
        displayedTasks.sort((a, b) => priorityLevel[a.priority] - priorityLevel[b.priority]);
     }
-
-
+    //another if statement for if task is completed and "hide completed" is on in filter menu
+    //displaying the tasks based on completion status
+    if(!showCompletedTasks)
+    {
+        displayedTasks = displayedTasks.filter(task => task.completed === false);
+    }
 
 
 
@@ -297,21 +302,38 @@ document.querySelector(".sidebarIcons:last-child").addEventListener("click", add
 renderView();
 
 
+// SORTING & FILTERING TASKS
+    //Sorting the tasks based on due date
+    document.querySelector(".dueDate").addEventListener("click", function()
+    {
+        // we'll use "DueDate" for due date 
+        sortType = "DueDate";
+        renderView();
+    });
+    //Sorting the tasks based on priority
+    document.querySelector(".priority").addEventListener("click", function(){
 
-//Sorting the tasks based on due date
-document.querySelector(".dueDate").addEventListener("click", function()
-{
-    // we'll use 2 for due date 
-    sortType = "DueDate";
-    renderView();
-});
+        //we'll use "Priority" for priority
+        sortType = "Priority";
+        renderView();
+    });
+    //Activates if the 'hide completed' checkbox is checked/unchecked
+    document.querySelector("#HideComp").addEventListener("change", function(){
 
-document.querySelector(".priority").addEventListener("click", function(){
+        //checks the status of the box and sets vaibale accrodingly for the renderview function
+        if (this.checked)
+        {
+            showCompletedTasks = false;
+        }
+        else
+        {
+            showCompletedTasks = true;
+        }
+        renderView();
+    });
+    
 
-    //we'll use 3 for priority
-    sortType = "Priority";
-    renderView();
-});
+
 
 //Adding Custiom Profile Pic
 
