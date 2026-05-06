@@ -197,7 +197,16 @@ height: 100%;
     background-color: #dfebeb;
     display: flex;
     justify-content: center;
+    background: linear-gradient(145deg, #944bd3, #84d7a6, #49a4dd);
+    background-size: 400% 400%;
+    animation: backgroundShift 15s ease infinite;
 }
+@keyframes backgroundShift {
+    0% {background-position:0% 50%}
+    50% {background-position:100% 50%}
+    100% {background-position:0% 50%}
+}
+
     /* MAIN FLEXBOX */
     .mainFlex {
         display: flex;
