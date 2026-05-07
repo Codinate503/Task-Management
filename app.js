@@ -55,7 +55,7 @@ function renderStats() {
 
     let total = tasks.length;
     let completed = tasks.filter(t => t.completed).length;
-    let today = new Date().toISOString().split("T")[0];
+    let today = new Date(Date.now() - 7 * 60 * 60 * 1000).toISOString().split("T")[0];
     
     let overdue = tasks.filter(t => {
         if (!t.dueDate) return false;
