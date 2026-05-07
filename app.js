@@ -74,14 +74,14 @@ function renderStats() {
             <div class="stats-bars">
 
                 <div class="bar-group">
-                    <h3>Total Tasks</h3>
+                    <h3 class="second_font stats-font">Total Tasks</h3>
                     <div class="task-bar">
                         ${tasks.map(() => `<div class="block total"></div>`).join("")}
                     </div>
                 </div>
 
                 <div class="bar-group">
-                    <h3>Completed</h3>
+                    <h3 class="second_font stats-font">Completed</h3>
                     <div class="task-bar">
                         ${tasks.map((_, i) => `
                             <div class="block ${i < completed ? "completed" : "empty"}"></div>
@@ -90,7 +90,7 @@ function renderStats() {
                 </div>
                         
                 <div class="bar-group">
-                    <h3>Due Today</h3>
+                    <h3 class="second_font stats-font">Due Today</h3>
                     <div class="task-bar">
                         ${tasks.map((_, i) => `
                             <div class="block ${i < dueToday ? "dueToday" : "empty"}"></div>
@@ -99,7 +99,7 @@ function renderStats() {
                 </div>
 
                 <div class="bar-group">
-                    <h3>Overdue</h3>
+                    <h3 class="second_font stats-font">Overdue</h3>
                     <div class="task-bar">
                         ${tasks.map((_, i) => `
                             <div class="block ${i < overdue ? "overdue" : "empty"}"></div>

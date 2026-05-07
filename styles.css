@@ -272,6 +272,11 @@ height: 100%;
 
     animation: fadeIn 0.2s ease;
 }
+.popupBoxtext
+{
+   color: black; 
+   font-size: 22px;
+}
 
 /* INPUTS */
 #popupBox input,
@@ -544,4 +549,10 @@ h2, h3 {
     border: 2px solid #2a2a2a;
     opacity: 0.2;
     box-sizing: border-box;
+}
+
+/* STATS DASHBOARD TEXT */
+.stats-font
+{
+    font-size: 20px;
 }
